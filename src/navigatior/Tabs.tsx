@@ -1,14 +1,16 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Platform, Text} from 'react-native';
+import {Platform} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
 import {Tab1Screen} from '../screens/Tab1Screen';
-import {Tab2Screen} from '../screens/Tab2Screen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {StackNavigator} from './StackNavigator';
 import {colors} from '../theme/appTheme';
+import {TopTabNavigator} from './TopTabNavigator';
 
 export const Tabs = () => {
   return Platform.OS === 'ios' ? <TabsIOS /> : <TabsAndroid />;
@@ -30,20 +32,20 @@ const TabsAndroid = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
-        tabBarIcon: ({color, focused}) => {
+        tabBarIcon: ({color}) => {
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1';
+              iconName = 'heart-outline';
               break;
-            case 'Tab2Screen':
-              iconName = 'T2';
+            case 'TopTabNavigator':
+              iconName = 'help-buoy-sharp';
               break;
             case 'StackNavigator':
-              iconName = 'ST';
+              iconName = 'home-outline';
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>;
+          return <Icon name={iconName} size={80} color={color} />;
         },
       })}>
       <BottomTabAndroid.Screen
@@ -52,9 +54,9 @@ const TabsAndroid = () => {
         component={Tab1Screen}
       />
       <BottomTabAndroid.Screen
-        name="Tab2Screen"
+        name="TopTabNavigator"
         options={{title: 'Tab 2'}}
-        component={Tab2Screen}
+        component={TopTabNavigator}
       />
       <BottomTabAndroid.Screen
         name="StackNavigator"
@@ -72,6 +74,7 @@ const TabsIOS = () => {
     <BottomTabIOS.Navigator
       sceneContainerStyle={{backgroundColor: 'white'}}
       screenOptions={({route}) => ({
+        headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarStyle: {
           borderTopWidth: 0,
@@ -80,20 +83,20 @@ const TabsIOS = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
-        tabBarIcon: ({color, focused, size}) => {
+        tabBarIcon: ({color}) => {
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1';
+              iconName = 'heart-outline';
               break;
-            case 'Tab2Screen':
-              iconName = 'T2';
+            case 'TopTabNavigator':
+              iconName = 'help-buoy-sharp';
               break;
             case 'StackNavigator':
-              iconName = 'ST';
+              iconName = 'home-outline';
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>;
+          return <Icon name={iconName} size={20} color={color} />;
         },
       })}>
       <BottomTabIOS.Screen
@@ -102,9 +105,9 @@ const TabsIOS = () => {
         component={Tab1Screen}
       />
       <BottomTabIOS.Screen
-        name="Tab2Screen"
+        name="TopTabNavigator"
         options={{title: 'Tab 2'}}
-        component={Tab2Screen}
+        component={TopTabNavigator}
       />
       <BottomTabIOS.Screen
         name="StackNavigator"

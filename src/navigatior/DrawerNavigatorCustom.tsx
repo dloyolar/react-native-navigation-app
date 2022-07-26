@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   createDrawerNavigator,
@@ -9,6 +10,7 @@ import {SettingsScreen} from '../screens/SettingsScreen';
 import {Image, Text, View, TouchableOpacity} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {Tabs} from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -39,14 +41,16 @@ const MenuContent = ({navigation}: DrawerContentComponentProps) => {
 
       <View style={styles.menuContainer}>
         <TouchableOpacity
-          style={styles.menuButton}
+          style={{...styles.menuButton, flexDirection: 'row'}}
           onPress={() => navigation.navigate('Tabs')}>
-          <Text style={styles.menuText}>Stack Navigator</Text>
+          <Icon name="navigate-circle-outline" size={20} color="black" />
+          <Text style={styles.menuText}> Stack Navigator</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menuButton}
+          style={{...styles.menuButton, flexDirection: 'row'}}
           onPress={() => navigation.navigate('SettingsScreen')}>
-          <Text style={styles.menuText}>Settings</Text>
+          <Icon name="ios-cog-outline" size={20} color="black" />
+          <Text style={styles.menuText}> Settings</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
