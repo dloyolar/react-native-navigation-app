@@ -1,10 +1,12 @@
 # React Native Navigation
 
-Studying and practice navigaton in react native
+Studying and practice navigaton like Drawer, Stacker, Top Bar Navigation and Tabs in react native
 
 ## Demo Images
 
 ![image](./simulator.png)
+![image](./simulator2.png)
+![image](./simulator3.png)
 
 ## Installation
 
